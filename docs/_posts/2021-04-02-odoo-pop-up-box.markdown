@@ -5,6 +5,11 @@ date:   2021-04-02 14:00:37 +0700
 categories: odoo backend
 ---
 
+# Table of content
+1. [Scenario 1](#scenario-1-button-to-pop-up)  
+2. [Scenario 2](#scenario-2-action-to-pop-up)
+---
+
 ## Scenario 1: Button to pop-up
 Start with click to button in the left of state bar and it will be show the popup with content
 
@@ -76,4 +81,40 @@ class PopupModel(models.TransientModel):
     <field name="view_mode">form</field>
     <field name="target">new</field>
 </record>
+```
+
+
+## Scenario 2: Action to pop-up
+Start with click to action in the top of screen and it will be show the popup with content
+
+### **Model**  
+Define a `TransientModel` to hold all information *in form* in `Wizard` section. This model is to process button in popup form. For example, we will using model name like [Scenario 1](#scenario-1-button-to-pop-up)
+
+### **View**
+```xml
+<record id="upload_file_form" model="ir.ui.view">
+    <field name="name">upload.file.form</field>
+    <field name="model">popup.model</field>
+    <field name="arch" type="xml">
+        <form string="Upload">
+            <p>Get template file</p>
+            <field name="file_name" invisible="1"/>
+            <field name="file_datas" file_name="file_name"/>
+            <footer>
+                <button name="Upload" string="Upload" class="btn-primary"/>
+                <button special="cancel" string="Cancel" class="btn-secondary"/>
+            </footer>
+        </form>
+    </field>
+</record>
+<act_window
+    id="action_upload_file"
+    name="Upload file"
+    res_model="popup.model"
+    src_model="hr.employee"
+    view_mode="form"
+    multi="True"
+    target="new"
+    key2="client_action_multi"
+/>
 ```
