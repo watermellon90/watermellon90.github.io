@@ -5,7 +5,7 @@ date:   2021-04-02 14:00:37 +0700
 categories: odoo backend
 ---
 
-## Scenerio 1: Button to pop-up
+## Scenario 1: Button to pop-up
 Start with click to button in the left of state bar and it will be show the popup with content
 
 ### **Model**  
@@ -13,7 +13,7 @@ Define a `TransientModel` to hold all information *in form*
 Btw, we still need a button from current model to open the popup form. For example, we have button in `hr.employee` model to `Upload` employee profile  
 
 **Current model**
-```
+```python
 class HrEmployeeInherit(models.Model):
     _inherit = 'hr.employee'
 
@@ -29,10 +29,10 @@ class HrEmployeeInherit(models.Model):
 		}
 ```
 **Transient model**
-```
+```python
 class PopupModel(models.TransientModel):
     _name = "popup.model"
-    _description = "For example of scenerio 1"
+    _description = "For example of scenario 1"
 
     file_name = fields.Char(string="File name")
     file_datas = fields.Binary(string="Datas")
@@ -40,7 +40,7 @@ class PopupModel(models.TransientModel):
 
 ### **View**  
 **Button in header**
-```
+```xml
 <header>
     <button 
         name="action_upload_file" type="object" 
@@ -52,7 +52,7 @@ class PopupModel(models.TransientModel):
 ```
 
 **Action and Form**
-```
+```xml
 <record id="upload_file_form" model="ir.ui.view">
     <field name="name">upload.file.form</field>
     <field name="model">popup.model</field>
