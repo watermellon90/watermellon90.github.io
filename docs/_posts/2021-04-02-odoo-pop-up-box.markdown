@@ -5,7 +5,7 @@ date:   2021-04-02 14:00:37 +0700
 categories: odoo backend
 ---
 
-## Scenerio 1: Button to pop-up
+## Scenario 1: Button to pop-up
 Start with click to button in the left of state bar and it will be show the popup with content
 
 ### **Model**  
