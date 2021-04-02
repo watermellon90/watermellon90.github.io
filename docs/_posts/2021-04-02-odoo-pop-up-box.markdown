@@ -6,8 +6,8 @@ categories: odoo backend
 ---
 
 # Table of content
-1. [Scenario 1](#scenario-1-button-to-pop-up)  
-2. [Scenario 2](#scenario-2-action-to-pop-up)
+- [Scenario 1](#scenario-1-button-to-pop-up)  
+- [Scenario 2](#scenario-2-action-to-pop-up)
 ---
 
 ## Scenario 1: Button to pop-up
